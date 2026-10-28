@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "Master-Vehicle-Doctor-AI-v0.2.0-Upgrade.zip"
+      - "Master-Vehicle-Doctor-AI-v0.3.0-Vehicle-Selection.zip"
       - ".github/workflows/build-apk.yml"
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
 
       - name: Extract Android project
         run: |
-          unzip -o Master-Vehicle-Doctor-AI-v0.2.0-Upgrade.zip -d .
+          unzip -o Master-Vehicle-Doctor-AI-v0.3.0-Vehicle-Selection.zip -d .
           ls -la
           ls -la app
 
