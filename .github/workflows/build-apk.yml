@@ -1,10 +1,11 @@
+
 name: Build Master Vehicle Doctor AI APK
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - Master-Vehicle-Doctor-AI-v0.2.0-Upgrade.zip
+      - "Master-Vehicle-Doctor-AI-Android-Project.zip"
       - ".github/workflows/build-apk.yml"
 
 jobs:
@@ -23,19 +24,19 @@ jobs:
 
       - name: Extract Android project
         run: |
-          unzip -o Master-Vehicle-Doctor-AI-v0.2.0-Upgrade.zip
-          ls -la project
+          unzip -o Master-Vehicle-Doctor-AI-Android-Project.zip -d .
+          ls -la
+          ls -la app
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build debug APK
-        working-directory: project
         run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Master-Vehicle-Doctor-AI-APK
-          path: project/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
